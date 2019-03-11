@@ -1,0 +1,29 @@
+getPila(bloque x):
+	Para cada lista del array
+		para cada elemento de lista
+			si elemento = x
+				devolver indice
+	devolver nulo
+
+moveOnto(bloque a, b):
+	Recorrer pila de a
+		si elem = a
+			encontrado = true
+			ini = pos
+		si_no si encontrado = true
+			añadir elem a su lista inicial
+
+	eliminar(pilaA, ini, fin)
+
+	Recorrer pila de b
+		si elem = b
+			encontrado = true
+			ini = pos
+		si_no si encontrado = true
+			añadir elem a su lista inicial
+
+	eliminar(pilaB, ini, fin)
+	
+	pilaB.push_back(b)
+
+	añadir a al final de la pilaB

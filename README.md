@@ -1,2 +1,2 @@
 # Online-Judge
-Programs created to solve certain problems from Internet contests.
+Programas creados para la preparación para las Olimpiadas de Programación.

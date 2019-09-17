@@ -36,6 +36,7 @@ void obtener_soluciones(vector<string> hilo1, vector<string> hilo2) {
                 nPrintsActuales++;
                 salidaConsola.append(to_string(vars[hilo1[cont1][6] - 'a']));
             } else {
+            	// Se guarda el valor de ese nivel por si hubiera que deshacer la asignación
                 vant[nivel] = vars[hilo1[cont1][0] - 'a'];
                 vars[hilo1[cont1][0] - 'a'] = hilo1[cont1][4] - '0';
             }
@@ -49,7 +50,7 @@ void obtener_soluciones(vector<string> hilo1, vector<string> hilo2) {
 					nPrintsActuales--;
 					salidaConsola = salidaConsola.substr(0, salidaConsola.size() - 1);
 				} else {
-					vars[hilo2[cont2][0] - 'a'] = vant[nivel];
+					vars[hilo1[cont1][0] - 'a'] = vant[nivel];
 				}
 			}
 			
@@ -61,22 +62,24 @@ void obtener_soluciones(vector<string> hilo1, vector<string> hilo2) {
                 nPrintsActuales++;
                 salidaConsola.append(to_string(vars[hilo2[cont2][6] - 'a']));
             } else {
+            	// Se guarda el valor de ese nivel por si hubiera que deshacer la asignación
                 vant[nivel] = vars[hilo2[cont2][0] - 'a'];
                 vars[hilo2[cont2][0] - 'a'] = hilo2[cont2][4] - '0';
             }
             cont2++;
 		}
 		
-        // Si solución hacer
+        // Si solución entonces
 		if (nPrintsActuales == numPrints) {
 			// Almacenar
+			//cout << salidaConsola << endl;
 			soluciones.insert(salidaConsola);
 		}
 		// Si Criterio profundizar
-		if (nPrintsActuales < numPrints && nivel < hilo1.size() + hilo2.size()) {
+		if (nPrintsActuales < numPrints && nivel < (hilo1.size() + hilo2.size())) {
 			nivel++;
 		} else
-			while(nivel > 0 && !(s[nivel] == 1 && cont2 < hilo2.size())) {
+			while(nivel > 0 && !(s[nivel] < 2 && cont2 < hilo2.size())) {
 			    // Deshacer la última instrucción
 			    if (s[nivel] == 1) {
 			    	cont1--;
@@ -163,8 +166,8 @@ int main(int argc, char const *argv[]) {
 			cout << endl;
 		}
 	}
+
 }
 
 // dentro de un hilo todo se ejecuta secuencialmente
 // la longitud de las soluciones validas = num 'prints'
-//
